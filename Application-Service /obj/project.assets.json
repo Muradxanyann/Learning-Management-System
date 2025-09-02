@@ -641,11 +641,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/gormuradxanyan/RiderProjects/Learning Management System/Application-Service /Application-Service .csproj",
+      "projectUniqueName": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Application-Service /Application-Service .csproj",
       "projectName": "Application-Service",
-      "projectPath": "/Users/gormuradxanyan/RiderProjects/Learning Management System/Application-Service /Application-Service .csproj",
+      "projectPath": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Application-Service /Application-Service .csproj",
       "packagesPath": "/Users/gormuradxanyan/.nuget/packages/",
-      "outputPath": "/Users/gormuradxanyan/RiderProjects/Learning Management System/Application-Service /obj/",
+      "outputPath": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Application-Service /obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/gormuradxanyan/.nuget/NuGet/NuGet.Config"
@@ -660,8 +660,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/Domain.csproj": {
-              "projectPath": "/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/Domain.csproj"
+            "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/Domain.csproj": {
+              "projectPath": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/Domain.csproj"
             }
           }
         }

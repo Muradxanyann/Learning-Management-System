@@ -1,0 +1,26 @@
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/bin/Debug/net9.0/Domain.deps.json
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/bin/Debug/net9.0/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/bin/Debug/net9.0/Domain.pdb
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/Domain.csproj.AssemblyReference.cache
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/Domain.csproj.CoreCompileInputs.cache
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/Domain.sourcelink.json
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/refint/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/Domain.pdb
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Domain/obj/Debug/net9.0/ref/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/bin/Debug/net9.0/Domain.deps.json
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/bin/Debug/net9.0/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/bin/Debug/net9.0/Domain.pdb
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/Domain.csproj.AssemblyReference.cache
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/Domain.csproj.CoreCompileInputs.cache
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/Domain.sourcelink.json
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/refint/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/Domain.pdb
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/obj/Debug/net9.0/ref/Domain.dll

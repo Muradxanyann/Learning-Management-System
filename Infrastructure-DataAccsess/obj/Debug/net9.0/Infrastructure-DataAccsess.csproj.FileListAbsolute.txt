@@ -1,0 +1,36 @@
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/bin/Debug/net9.0/Infrastructure-DataAccsess.deps.json
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/bin/Debug/net9.0/Infrastructure-DataAccsess.runtimeconfig.json
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/bin/Debug/net9.0/Infrastructure-DataAccsess.dll
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/bin/Debug/net9.0/Infrastructure-DataAccsess.pdb
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/bin/Debug/net9.0/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/bin/Debug/net9.0/Domain.pdb
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.csproj.AssemblyReference.cache
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.AssemblyInfoInputs.cache
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.AssemblyInfo.cs
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.csproj.CoreCompileInputs.cache
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.sourcelink.json
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastr.359AC4C1.Up2Date
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.dll
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/refint/Infrastructure-DataAccsess.dll
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.pdb
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.genruntimeconfig.cache
+/Users/gormuradxanyan/RiderProjects/Learning Management System/Infrastructure-DataAccsess/obj/Debug/net9.0/ref/Infrastructure-DataAccsess.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/bin/Debug/net9.0/Infrastructure-DataAccsess.deps.json
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/bin/Debug/net9.0/Infrastructure-DataAccsess.runtimeconfig.json
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/bin/Debug/net9.0/Infrastructure-DataAccsess.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/bin/Debug/net9.0/Infrastructure-DataAccsess.pdb
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/bin/Debug/net9.0/Domain.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/bin/Debug/net9.0/Domain.pdb
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.csproj.AssemblyReference.cache
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.AssemblyInfoInputs.cache
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.AssemblyInfo.cs
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.csproj.CoreCompileInputs.cache
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.sourcelink.json
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastr.359AC4C1.Up2Date
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/refint/Infrastructure-DataAccsess.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.pdb
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/Infrastructure-DataAccsess.genruntimeconfig.cache
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/obj/Debug/net9.0/ref/Infrastructure-DataAccsess.dll
