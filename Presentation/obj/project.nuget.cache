@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "6jCH9OfIB9Q=",
+  "dgSpecHash": "yDy3VuxptaM=",
   "success": true,
-  "projectFilePath": "/Users/gormuradxanyan/RiderProjects/Learning Management System/Presentation/Presentation.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/gormuradxanyan/RiderProjects/Learning Management System/Learning Management System/Learning Management System.csproj",
+  "expectedPackageFiles": [
+    "/Users/gormuradxanyan/.nuget/packages/microsoft.aspnetcore.openapi/9.0.4/microsoft.aspnetcore.openapi.9.0.4.nupkg.sha512",
+    "/Users/gormuradxanyan/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
   "logs": []
 }
