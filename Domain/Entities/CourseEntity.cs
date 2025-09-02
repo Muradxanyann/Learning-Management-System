@@ -6,7 +6,8 @@ public class CourseEntity
     public string Title { get; set; } =  null!;
     public string  Description { get; set; } = null!;
     public List<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
-    public List<LessonCourse> LessonCourses { get; set; } = new List<LessonCourse>();
+    
+    public List<LessonEntity> Lessons { get; set; } = new List<LessonEntity>();
     
     public CourseEntity() { }
 

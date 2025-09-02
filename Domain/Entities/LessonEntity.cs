@@ -5,7 +5,10 @@ public class LessonEntity
     public Guid LessonId { get; set; }
     public string Title { get; set; } =  null!;
     public string  Description { get; set; } = null!;
-    public List<LessonCourse> LessonCourses { get; set; } = new List<LessonCourse>();
+    
+    public Guid CourseId { get; set; }
+    
+    public CourseEntity Course { get; set; } = null!;
     
     public LessonEntity () { }
 
