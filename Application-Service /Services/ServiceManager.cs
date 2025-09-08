@@ -1,6 +1,6 @@
 namespace Service;
 
-public class ClassService
+public class ServiceManager
 {
     
 }
