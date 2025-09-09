@@ -28,6 +28,9 @@
             "projectReferences": {
               "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/Domain.csproj": {
                 "projectPath": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/Domain.csproj"
+              },
+              "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/Infrastructure-DataAccsess.csproj": {
+                "projectPath": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Infrastructure-DataAccsess/Infrastructure-DataAccsess.csproj"
               }
             }
           }
@@ -300,6 +303,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "EFCore.NamingConventions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "FluentValidation.AspNetCore": {
               "target": "Package",

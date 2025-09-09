@@ -402,3 +402,4 @@
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/obj/Debug/net9.0/Presentation.pdb
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/obj/Debug/net9.0/Presentation.genruntimeconfig.cache
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/obj/Debug/net9.0/ref/Presentation.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/EFCore.NamingConventions.dll

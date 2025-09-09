@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "54daYXR46Gs=",
+  "dgSpecHash": "6aNRWq9vXvs=",
   "success": true,
   "projectFilePath": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/Presentation.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/Users/gormuradxanyan/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
+    "/Users/gormuradxanyan/.nuget/packages/efcore.namingconventions/9.0.0/efcore.namingconventions.9.0.0.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.11.0/fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
