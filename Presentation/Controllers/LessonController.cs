@@ -10,16 +10,23 @@ namespace Learning_Management_System.Controllers;
 public class LessonController : ControllerBase
 {
     private readonly IServiceManager  _serviceManager;
+    private readonly ILogger<LessonController> _logger;
 
-    public LessonController(IServiceManager serviceManager)
+
+    public LessonController(IServiceManager serviceManager,  ILogger<LessonController> logger)
     {
         _serviceManager = serviceManager;
+        _logger = logger;
     }
     
     [HttpGet]
     public async Task<IActionResult> GetAllLessons()
     {
         var lessons = await _serviceManager.Lesson.GetAllAsync();
+        if (lessons.Count() == 0)
+        {
+            _logger.LogInformation("No lessons found");
+        }
         return Ok(lessons);
     }
     
@@ -28,7 +35,11 @@ public class LessonController : ControllerBase
     {
         var lesson = await _serviceManager.Lesson.GetByIdAsync(id);
         if (lesson == null)
+        {
+            _logger.LogInformation("No lesson found");
             return NotFound();
+        }
+            
         return Ok(lesson);
     }
     
