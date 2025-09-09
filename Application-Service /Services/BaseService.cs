@@ -9,12 +9,18 @@ namespace Service;
 public abstract class BaseService<T> : IBaseService<T> where T : class
 {
     protected readonly AppDbContext Context;
-    private readonly ILogger _logger; 
+    private readonly ILogger _logger = null!; 
 
-    public BaseService(AppDbContext context,  ILogger<BaseService<T>> logger)
+    public BaseService(AppDbContext context,  ILogger logger)
     {
         Context = context;
         _logger = logger;
+    }
+
+    
+    public BaseService(AppDbContext context)
+    {
+        Context = context;
     }
     public async Task<IEnumerable<T>> GetAllAsync()
     {
@@ -23,13 +29,13 @@ public abstract class BaseService<T> : IBaseService<T> where T : class
             .ToListAsync();
     }
 
-    public async Task<T?> GetByIdAsync(int id)
+    public async Task<T?> GetByIdAsync(Guid id)
     {
-        var entity = await Context.Set<T>().AsNoTracking().FirstOrDefaultAsync();
+        var entity = await Context.Set<T>().FindAsync(id);
         if (entity == null)
         {
            _logger.LogError($"Entity with id {id} was not found");
-           throw new NotFoundException();
+           return null;
         }
         return entity;
     }
@@ -40,15 +46,16 @@ public abstract class BaseService<T> : IBaseService<T> where T : class
          return Task.FromResult(entity);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(Guid id)
     {
         var entity = await Context.Set<T>().FindAsync(id);
         if (entity == null)
         {
             _logger.LogError($"Entity with id {id} was not found");
-            throw new NotFoundException();
+            return false;
         }
         Context.Set<T>().Remove(entity);
+        return true;
     }
 }
 
