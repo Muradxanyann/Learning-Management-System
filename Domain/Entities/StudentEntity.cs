@@ -6,7 +6,7 @@ public class StudentEntity
     public string StudentName { get; set; } =  null!;
     public string Email { get; set; } =  null!;
     public string PhoneNumber { get; set; } =  null!;
-    public List<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
+    public IList<StudentCourse> StudentCourses { get; set; } = [];
     
     public StudentEntity() { }
 

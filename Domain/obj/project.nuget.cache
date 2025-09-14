@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZPpIwLo37wc=",
+  "dgSpecHash": "93FCQ3koxoQ=",
   "success": true,
   "projectFilePath": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Domain/Domain.csproj",
   "expectedPackageFiles": [
-    "/Users/gormuradxanyan/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512"
+    "/Users/gormuradxanyan/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
+    "/Users/gormuradxanyan/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.8/microsoft.extensions.dependencyinjection.abstractions.9.0.8.nupkg.sha512"
   ],
   "logs": []
 }
