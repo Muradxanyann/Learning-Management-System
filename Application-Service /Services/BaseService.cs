@@ -31,13 +31,7 @@ public abstract class BaseService<T> : IBaseService<T> where T : class
 
     public async Task<T?> GetByIdAsync(Guid id)
     {
-        var entity = await Context.Set<T>().FindAsync(id);
-        if (entity == null)
-        {
-           _logger.LogError($"Entity with id {id} was not found");
-           return null;
-        }
-        return entity;
+        return await Context.Set<T>().FindAsync(id);
     }
 
     public Task<T> CreateAsync(T entity)

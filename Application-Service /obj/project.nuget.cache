@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "qssyvmTQnp4=",
+  "dgSpecHash": "1+W2oOM9Dhs=",
   "success": true,
   "projectFilePath": "/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Application-Service /Application-Service .csproj",
   "expectedPackageFiles": [
+    "/Users/gormuradxanyan/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/gormuradxanyan/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
@@ -13,6 +15,7 @@
     "/Users/gormuradxanyan/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/9.0.8/microsoft.aspnetcore.cryptography.keyderivation.9.0.8.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/9.0.8/microsoft.aspnetcore.identity.entityframeworkcore.9.0.8.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
+    "/Users/gormuradxanyan/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/microsoft.data.sqlclient/5.1.6/microsoft.data.sqlclient.5.1.6.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/microsoft.data.sqlclient.sni.runtime/5.1.1/microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512",
     "/Users/gormuradxanyan/.nuget/packages/microsoft.entityframeworkcore/9.0.8/microsoft.entityframeworkcore.9.0.8.nupkg.sha512",

@@ -1,6 +1,7 @@
 using Domain;
 using Infrastructure___Persistence;
 using Microsoft.Extensions.Logging;
+using Service.DTOs;
 using Service.Interfaces;
 
 namespace Service;
@@ -14,5 +15,6 @@ public class CourseService : BaseService<CourseEntity>, ICourseService
     public CourseService(AppDbContext context) : base(context)
     {
     }
+    
 }
     
