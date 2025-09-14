@@ -1,3 +1,4 @@
+using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs;
@@ -11,12 +12,14 @@ public class CourseController : ControllerBase
 {
     private readonly IServiceManager  _serviceManager;
     private readonly ILogger<CourseController> _logger;
+    private readonly IMapper _mapper;
 
-
-    public CourseController(IServiceManager serviceManager,  ILogger<CourseController> logger)
+    [ActivatorUtilitiesConstructor]
+    public CourseController(IServiceManager serviceManager,  ILogger<CourseController> logger,  IMapper mapper)
     {
         _serviceManager = serviceManager;
         _logger = logger;
+        _mapper = mapper;
     }
     
     [HttpGet]
@@ -27,7 +30,9 @@ public class CourseController : ControllerBase
         {
             _logger.LogInformation("No courses found");
         }
-        return Ok(courses);
+
+        var courseDto = _mapper.Map<List<CourseForResponseDto>>(courses);
+        return Ok(courseDto);
     }
     
     [HttpGet("{id}")]
@@ -39,19 +44,15 @@ public class CourseController : ControllerBase
             _logger.LogInformation($"Entity with id {id} was not found");
             return NotFound();
         }
-            
-        return Ok(course);
+        
+        var courseDto = _mapper.Map<CourseForResponseDto>(course);
+        return Ok(courseDto);
     }
     
     [HttpPost]
     public async Task<IActionResult> CreateCourse([FromBody] CourseForCreationDto dto)
     {
-        var course = new CourseEntity
-        {
-            CourseId = new Guid(),
-            Title = dto.Title,
-            Description = dto.Description
-        };
+        var course = _mapper.Map<CourseEntity>(dto);
         await _serviceManager.Course.CreateAsync(course);
         await _serviceManager.SaveAsync();
         return CreatedAtAction(nameof(GetCourseById), new { id = course.CourseId }, course);

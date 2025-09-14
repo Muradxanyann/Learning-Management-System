@@ -1,3 +1,4 @@
+using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs;
@@ -11,17 +12,22 @@ public class StudentsController : ControllerBase
 {
     private readonly ILogger<StudentsController> _logger;
     private readonly IServiceManager  _serviceManager;
-    public StudentsController(ILogger<StudentsController> logger, IServiceManager serviceManager)
+    private readonly IMapper  _mapper;
+    
+    [ActivatorUtilitiesConstructor]
+    public StudentsController(ILogger<StudentsController> logger, IServiceManager serviceManager, IMapper mapper)
     {
         _logger = logger;
         _serviceManager = serviceManager;
+        _mapper = mapper;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var entities = await _serviceManager.Student.GetAllAsync();
-        return Ok(entities);
+        var studentDto = _mapper.Map<IList<StudentForResponseDto>>(entities);
+        return Ok(studentDto);
     }
 
     [HttpGet("{id}")]
@@ -40,7 +46,7 @@ public class StudentsController : ControllerBase
         var student = new StudentEntity
         {
             StudentId = Guid.NewGuid(),
-            StudentName = dto.Name,
+            StudentName = dto.StudentName,
             Email = dto.Email,
             PhoneNumber = dto.PhoneNumber
         };

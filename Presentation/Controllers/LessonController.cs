@@ -1,3 +1,4 @@
+using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs;
@@ -11,12 +12,14 @@ public class LessonController : ControllerBase
 {
     private readonly IServiceManager  _serviceManager;
     private readonly ILogger<LessonController> _logger;
+    private readonly IMapper _mapper;
 
 
-    public LessonController(IServiceManager serviceManager,  ILogger<LessonController> logger)
+    public LessonController(IServiceManager serviceManager,  ILogger<LessonController> logger, IMapper mapper)
     {
         _serviceManager = serviceManager;
         _logger = logger;
+        _mapper = mapper;
     }
     
     [HttpGet]
@@ -27,7 +30,9 @@ public class LessonController : ControllerBase
         {
             _logger.LogInformation("No lessons found");
         }
-        return Ok(lessons);
+        
+        var responseDtos = _mapper.Map<List<LessonForResponseDto>>(lessons);
+        return Ok(responseDtos);
     }
     
     [HttpGet("{id}")]
@@ -39,22 +44,31 @@ public class LessonController : ControllerBase
             _logger.LogInformation("No lesson found");
             return NotFound();
         }
-            
-        return Ok(lesson);
+        
+        var dto = _mapper.Map<LessonForResponseDto>(lesson);
+        return Ok(dto);
     }
     
     [HttpPost]
-    public async Task<IActionResult> CreateLesson([FromBody] LessonForCreationDto dto)
+    public async Task<IActionResult> CreateLesson(Guid courseId, [FromBody] LessonForCreationDto dto)
     {
-        var lesson = new LessonEntity
+        /*var course = await _serviceManager.Course.GetByIdAsync(courseId);
+        if (course == null)
         {
-            LessonId = new Guid(),
-            Title = dto.Title,
-            Description = dto.Description
-        };
-        await _serviceManager.Lesson.CreateAsync(lesson);
+            _logger.LogInformation("No course found");
+            return NotFound();
+        }*/
+        var entity = _mapper.Map<LessonEntity>(dto);
+        entity.CourseId = courseId;
+        
+        //course.Lessons.Add(entity);
+        await _serviceManager.Lesson.CreateAsync(entity);
+        
+        
         await _serviceManager.SaveAsync();
-        return CreatedAtAction(nameof(GetLessonById), new { id = lesson.LessonId }, lesson);
+
+        var responseDto = _mapper.Map<LessonForResponseDto>(entity);
+        return CreatedAtAction(nameof(GetLessonById), new { id = responseDto.LessonId }, responseDto);
     }
 
     [HttpDelete]
@@ -65,7 +79,6 @@ public class LessonController : ControllerBase
             return NotFound();
         await _serviceManager.SaveAsync();
         return NoContent();
-
     }
     
     

@@ -9,6 +9,7 @@
       "Presentation/1.0.0": {
         "dependencies": {
           "Application-Service": "1.0.0",
+          "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "Domain": "1.0.0",
           "EFCore.NamingConventions": "9.0.0",
@@ -1437,6 +1438,8 @@
       },
       "Application-Service/1.0.0": {
         "dependencies": {
+          "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "Domain": "1.0.0",
           "FluentValidation": "12.0.0",
           "Infrastructure-DataAccsess": "1.0.0",
@@ -1451,7 +1454,8 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
-          "FluentValidation": "12.0.0"
+          "FluentValidation": "12.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8"
         },
         "runtime": {
           "Domain.dll": {
