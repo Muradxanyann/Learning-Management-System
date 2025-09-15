@@ -26,13 +26,8 @@ public class CourseController : ControllerBase
     public async Task<IActionResult> GetAllCourses()
     {
         var courses = await _serviceManager.Course.GetAllAsync();
-        if (courses.Count() == 0)
-        {
-            _logger.LogInformation("No courses found");
-        }
-
-        var courseDto = _mapper.Map<List<CourseForResponseDto>>(courses);
-        return Ok(courseDto);
+        var courseDtos = _mapper.Map<List<CourseForResponseDto>>(courses);
+        return Ok(courseDtos);;
     }
     
     [HttpGet("{id}")]

@@ -52,22 +52,21 @@ public class LessonController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateLesson(Guid courseId, [FromBody] LessonForCreationDto dto)
     {
-        /*var course = await _serviceManager.Course.GetByIdAsync(courseId);
+        var course = await _serviceManager.Course.GetByIdAsync(courseId);
         if (course == null)
         {
-            _logger.LogInformation("No course found");
+            _logger.LogInformation("No course found with id {courseId}", courseId);
             return NotFound();
-        }*/
-        var entity = _mapper.Map<LessonEntity>(dto);
-        entity.CourseId = courseId;
+        }
+        var lesson = _mapper.Map<LessonEntity>(dto);
         
-        //course.Lessons.Add(entity);
-        await _serviceManager.Lesson.CreateAsync(entity);
-        
+        course.Lessons.Add(lesson);
+        await _serviceManager.Lesson.CreateAsync(lesson);
+        Console.WriteLine(course.Lessons.Count);
         
         await _serviceManager.SaveAsync();
 
-        var responseDto = _mapper.Map<LessonForResponseDto>(entity);
+        var responseDto = _mapper.Map<LessonForResponseDto>(lesson);
         return CreatedAtAction(nameof(GetLessonById), new { id = responseDto.LessonId }, responseDto);
     }
 
