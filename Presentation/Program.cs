@@ -5,6 +5,7 @@ using Service;
 using Service.DTOs;
 using Service.Interfaces;
 using Service.ProfilesForMapping;
+using Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

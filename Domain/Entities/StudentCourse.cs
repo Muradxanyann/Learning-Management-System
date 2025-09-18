@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Domain;
 
 public class StudentCourse
 {
+ 
     public Guid StudentId { get; set; }
     public StudentEntity Student { get; set; } = null!;
     

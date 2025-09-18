@@ -11,9 +11,9 @@ namespace Learning_Management_System.Controllers;
 public class StudentsController : ControllerBase
 {
     private readonly ILogger<StudentsController> _logger;
-    private readonly IServiceManager  _serviceManager;
-    private readonly IMapper  _mapper;
-    
+    private readonly IServiceManager _serviceManager;
+    private readonly IMapper _mapper;
+
     [ActivatorUtilitiesConstructor]
     public StudentsController(ILogger<StudentsController> logger, IServiceManager serviceManager, IMapper mapper)
     {
@@ -23,47 +23,73 @@ public class StudentsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] QueryParametersDto dto)
     {
-        var entities = await _serviceManager.Student.GetAllAsync();
-        var studentDto = _mapper.Map<IList<StudentForResponseDto>>(entities);
+        var students =
+            await _serviceManager.Student.GetAllAsync(dto); // possible changing GetAll(need include with courses)
+        var studentDto = _mapper.Map<IList<StudentForResponseDto>>(students);
         return Ok(studentDto);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        var entity = await _serviceManager.Student.GetByIdAsync(id);
-        
-        if (entity is null)
+        var student = await _serviceManager.Student.GetByIdAsync(id);
+        if (student is null)
             return NotFound();
-        return Ok(entity);
+
+        var studentDto = _mapper.Map<StudentForResponseDto>(student);
+        return Ok(studentDto);
     }
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] StudentForCreationDto dto)
     {
-        var student = new StudentEntity
-        {
-            StudentId = Guid.NewGuid(),
-            StudentName = dto.StudentName,
-            Email = dto.Email,
-            PhoneNumber = dto.PhoneNumber
-        };
+        var student = _mapper.Map<StudentForCreationDto, StudentEntity>(dto);
         await _serviceManager.Student.CreateAsync(student);
         await _serviceManager.SaveAsync();
-        return CreatedAtAction(nameof(GetById), new { id = student.StudentId }, student);
+        var studentDto = _mapper.Map<StudentForResponseDto>(student);
+        return CreatedAtAction(nameof(GetById), new { id = studentDto.StudentId }, studentDto);
     }
 
     [HttpDelete]
-    public IActionResult Delete(Guid id)
+    public async Task<IActionResult> Delete(Guid id)
     {
-        var answer = _serviceManager.Student.DeleteAsync(id);
-        if (!answer.Result)
+        var answer = await _serviceManager.Student.DeleteAsync(id);
+        if (!answer)
             return NotFound();
-        _serviceManager.SaveAsync();
+        await _serviceManager.SaveAsync();
         return NoContent();
     }
-    
-    
 }
+
+/* For taking course, a lot of bugs inside)))
+
+[HttpPost("{studentId}/courses")]
+public async Task<IActionResult> TakeCourse(Guid studentId, [FromBody] TakeCourseDto dto)
+{
+    var student = await _serviceManager.Student.GetByIdAsync(studentId);
+    var course = await _serviceManager.Course.GetByIdAsync(dto.CourseId);
+    if (student is null || course is null)
+        return NotFound();
+
+
+    if (student.StudentCourses.All(sc => sc.CourseId != dto.CourseId))
+    {
+        var studentCourse = new StudentCourse
+        {
+            StudentId = studentId,
+            CourseId = dto.CourseId,
+            Created = DateTime.UtcNow,
+            IsCompleted = false
+        };
+        student.StudentCourses.Add(studentCourse);
+        await _serviceManager.SaveAsync();
+    }
+
+    var updatedStudent = await _serviceManager.Student.GetByIdWithCoursesAsync(studentId);
+
+    var studentDto = _mapper.Map<StudentForResponseDto>(updatedStudent);
+    return Ok(studentDto);
+}
+*/

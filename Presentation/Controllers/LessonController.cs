@@ -23,16 +23,16 @@ public class LessonController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<IActionResult> GetAllLessons()
+    public async Task<IActionResult> GetAllLessons([FromQuery]  QueryParametersDto dto)
     {
-        var lessons = await _serviceManager.Lesson.GetAllAsync();
-        if (lessons.Count() == 0)
+        var lessons = await _serviceManager.Lesson.GetAllAsync(dto);
+        if (!lessons.Any())
         {
             _logger.LogInformation("No lessons found");
         }
         
-        var responseDtos = _mapper.Map<List<LessonForResponseDto>>(lessons);
-        return Ok(responseDtos);
+        var responses = _mapper.Map<List<LessonForResponseDto>>(lessons);
+        return Ok(responses);
     }
     
     [HttpGet("{id}")]

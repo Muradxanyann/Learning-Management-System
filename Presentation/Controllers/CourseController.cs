@@ -23,11 +23,11 @@ public class CourseController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<IActionResult> GetAllCourses()
+    public async Task<IActionResult> GetAllCourses([FromQuery] QueryParametersDto dto)
     {
-        var courses = await _serviceManager.Course.GetAllAsync();
-        var courseDtos = _mapper.Map<List<CourseForResponseDto>>(courses);
-        return Ok(courseDtos);;
+        var courses = await _serviceManager.Course.GetAllAsync(dto);
+        var courseDos = _mapper.Map<List<CourseForResponseDto>>(courses);
+        return Ok(courseDos);
     }
     
     [HttpGet("{id}")]

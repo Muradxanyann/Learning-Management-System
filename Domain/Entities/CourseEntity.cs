@@ -7,9 +7,9 @@ public class CourseEntity
     public Guid CourseId { get; set; }
     public string Title { get; set; } =  null!;
     public string  Description { get; set; } = null!;
-    public IList<StudentCourse> StudentCourses { get; set; } = [];
+    public IList<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
 
-    public IList<LessonEntity> Lessons { get; set; } = [];
+    public IList<LessonEntity> Lessons { get; set; } = new List<LessonEntity>();
     
     public CourseEntity() { }
 
