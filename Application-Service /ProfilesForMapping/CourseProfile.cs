@@ -9,8 +9,13 @@ public class CourseProfile : Profile
     public CourseProfile()
     {
         CreateMap<CourseEntity, CourseForResponseDto>();
+        
 
         CreateMap<CourseForCreationDto, CourseEntity>()
             .ForMember(dest => dest.StudentCourses, opt => opt.Ignore());
+        
+        CreateMap<CourseEntity, CourseForResponseDtoWithoutLessons>();
+        
+        
     }
 }

@@ -10,7 +10,7 @@ public class StudentProfile : Profile
     {
         CreateMap<StudentEntity, StudentForResponseDto>();
 
-        CreateMap<StudentForCreationDto, StudentEntity>()
-            .ForMember(dest => dest.StudentCourses, opt => opt.Ignore());
+        CreateMap<StudentForCreationDto, StudentEntity>();
+
     }
 }

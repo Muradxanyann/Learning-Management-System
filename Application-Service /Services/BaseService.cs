@@ -1,31 +1,33 @@
-using Domain.Exceptions;
 using Infrastructure___Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Service.DTOs;
+using Service.Extensions;
 using Service.Interfaces;
 
-namespace Service;
+namespace Service.Services;
 
 public abstract class BaseService<T> : IBaseService<T> where T : class
 {
     protected readonly AppDbContext Context;
-    private readonly ILogger _logger = null!; 
+    private readonly ILogger _logger = null!;
 
-    public BaseService(AppDbContext context,  ILogger logger)
+    protected BaseService(AppDbContext context,  ILogger logger)
     {
         Context = context;
         _logger = logger;
     }
 
-    
-    public BaseService(AppDbContext context)
+
+    protected BaseService(AppDbContext context)
     {
         Context = context;
     }
-    public async Task<IEnumerable<T>> GetAllAsync()
+    public async Task<IEnumerable<T>> GetAllAsync(QueryParametersDto dto)
     {
         return await Context.Set<T>()
             .AsNoTracking()
+            .ApplySort(dto.SortBy!, dto.SortOrder)
             .ToListAsync();
     }
 

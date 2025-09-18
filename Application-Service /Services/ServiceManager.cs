@@ -1,6 +1,7 @@
 using Infrastructure___Persistence;
 using Microsoft.Extensions.Logging;
 using Service.Interfaces;
+using Service.Services;
 
 namespace Service;
 
