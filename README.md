@@ -44,27 +44,79 @@ The project is fully layered:
 
 The project follows **Onion Architecture** principles and is organized as follows:
 
-- **Presentation/** – API layer
-    - `Controllers/` – handles HTTP requests for Students, Courses, Lessons
-    - `Program.cs` – application entry point and service registration
+📂 Domain
+ ├── Domain.csproj
+ ├── 📂 Entities
+ │    ├── CourseEntity.cs
+ │    ├── LessonEntity.cs
+ │    ├── StudentEntity.cs
+ │    └── StudentCourse.cs
+ └── 📂 Exceptions
+      └── NotFoundException.cs
 
-- **Service/** – Business logic layer
-    - `Interfaces/` – service interfaces (e.g., IStudentService)
-    - `Implementations/` – concrete service implementations
+📂 Application-Service
+ ├── Application-Service.csproj
+ ├── 📂 DTOs
+ │    ├── 📂 CourseDto
+ │    │    ├── CourseForCreationDto.cs
+ │    │    ├── CourseForResponseDto.cs
+ │    │    └── CourseForResponseDtoWithoutLessons.cs
+ │    ├── 📂 LessonDto
+ │    │    ├── LessonForCreationDto.cs
+ │    │    └── LessonForResponseDto.cs
+ │    ├── 📂 StudentDto
+ │    │    ├── StudentCourseForCreationDto.cs
+ │    │    ├── StudentForCreationDto.cs
+ │    │    ├── StudentForResponseDto.cs
+ │    │    └── TakeCourseDto.cs
+ │    └── QueryParametersDTO.cs
+ ├── 📂 Filters
+ │    ├── CourseFilter.cs
+ │    ├── LessonFilter.cs
+ │    ├── StudentFilter.cs
+ │    └── PaginationBase.cs
+ ├── 📂 Extensions
+ │    └── IQueryableExtensions.cs
+ ├── 📂 Interfaces
+ │    ├── IBaseService.cs
+ │    ├── ICourseService.cs
+ │    ├── ILessonService.cs
+ │    ├── IStudentService.cs
+ │    └── IServiceManager.cs
+ ├── 📂 ProfilesForMapping
+ │    ├── CourseProfile.cs
+ │    ├── LessonProfile.cs
+ │    ├── StudentProfile.cs
+ │    └── StudentCourseProfile.cs
+ └── 📂 Services
+      ├── BaseService.cs
+      ├── CourseService.cs
+      ├── LessonService.cs
+      ├── StudentServices.cs
+      └── ServiceManager.cs
 
-- **Domain/** – Core entities and interfaces
-    - `Entities/` – Student, Course, Lesson models
-    - `DTOs/` – request and response objects for API
-    - `Exceptions/` – domain-specific exceptions
-    - `Interfaces/` – repository or domain interfaces
-
-- **Infrastructure/** – Database and persistence layer
-    - `Persistence/` – EF Core DbContext, migrations, repository implementations
-    - `Configurations/` – Fluent API configurations
-
-- **Migrations/** – EF Core migrations
-
-This structure ensures a **clear separation of concerns**, making the codebase easier to maintain and test.
+📂 Infrastructure-DataAccsess
+ ├── Infrastructure-DataAccsess.csproj
+ ├── AppDbContext.cs
+ ├── 📂 Configurations
+ │    ├── CourseConfiguration.cs
+ │    ├── LessonConfiguration.cs
+ │    ├── StudentConfiguration.cs
+ │    └── StudentCourseConfiguration.cs
+ └── 📂 Migrations
+      ├── AppDbContextModelSnapshot.cs
+     
+📂 Presentation
+ ├── Presentation.csproj
+ ├── Program.cs
+ ├── appsettings.json
+ ├── appsettings.Development.json
+ ├── 📂 Properties
+ │    └── launchSettings.json
+ └── 📂 Controllers
+      ├── CourseController.cs
+      ├── LessonController.cs
+      └── StudentController.cs
 
 ---
 
