@@ -43,7 +43,7 @@ The project is fully layered:
 ## 🏗️ Project Structure
 
 The project follows **Onion Architecture** principles and is organized as follows:
-
+```
 📂 Domain
  ├── Domain.csproj
  ├── 📂 Entities
@@ -117,7 +117,7 @@ The project follows **Onion Architecture** principles and is organized as follow
       ├── CourseController.cs
       ├── LessonController.cs
       └── StudentController.cs
-
+```
 ---
 
 ## 🛠️ Technologies Used
