@@ -5,7 +5,7 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
 ![EF Core](https://img.shields.io/badge/EntityFrameworkCore-8.0-blue)
 
-## Overview
+## 📖 Overview
 This is a **Learning Management System (LMS)** pet project built with **ASP.NET Core 8**, designed to practice and demonstrate a full-stack backend architecture using **Onion Architecture** principles.
 
 The project includes three main models:
@@ -22,10 +22,14 @@ The project is fully layered:
 
 ---
 
-## Features
+## ✨ Features
 
 - **CRUD operations** for Student, Course, and Lesson
 - **DTOs** for request/response to avoid exposing EF Core entities
+- **AutoMapper** integration for clean object-to-object mapping
+- **Sorting** (dynamic by any field)
+- **Filtering** (query-based filtering with DTOs)
+- **Pagination** (page number & page size support)
 - **Swagger UI** for easy API testing
 - **PostgreSQL** database integration with EF Core migrations
 - **Onion Architecture** for clear separation of concerns
@@ -36,7 +40,7 @@ The project is fully layered:
 
 ---
 
-## Project Structure
+## 🏗️ Project Structure
 
 The project follows **Onion Architecture** principles and is organized as follows:
 
@@ -64,24 +68,30 @@ This structure ensures a **clear separation of concerns**, making the codebase e
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 - **ASP.NET Core 8** – Web API framework
 - **Entity Framework Core** – ORM for PostgreSQL
 - **PostgreSQL** – Relational database
 - **Swashbuckle / Swagger** – Interactive API documentation
+- **AutoMapper** – DTO ↔ Entity mapping
 - **Onion Architecture** – Layered architecture pattern
-- **DTOs & AutoMapper** – For clean API models and mapping between layers
+- **DTOs** – Clean API models and data transfer
+- **LINQ + IQueryable Extensions** – Sorting, filtering, pagination
 
 ---
 
-## Notes
+## 📌 Notes
 
 - **GUID IDs** are auto-generated for all entities.
 - **DTOs** are used to avoid exposing database entities directly to the client.
+- **AutoMapper** simplifies mapping between entities and DTOs.
+- **Sorting, Filtering, Pagination** are implemented with reusable `IQueryable` extensions.
 - **Onion Architecture** separates core business logic from infrastructure and presentation layers.
 - **Database schema** uses `snake_case` for PostgreSQL compatibility.
-- **Swagger UI** is fully integrated for testing all CRUD endpoints.  
+- **Swagger UI** is fully integrated for testing all CRUD + query features.
+
+---  
 
 ---
 
