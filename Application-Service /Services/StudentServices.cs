@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Service.DTOs;
 using Service.Extensions;
+using Service.Filters;
 using Service.Interfaces;
 
 namespace Service.Services;
@@ -22,17 +23,21 @@ public class StudentService : BaseService<StudentEntity>, IStudentService
 
     }
 
-    public new async Task<IEnumerable<StudentEntity>> GetAllAsync(QueryParametersDto dto)
+    public async Task<IEnumerable<StudentEntity>> GetAllAsync(QueryParametersDto dto, StudentFilter filter, PageResult pagination)
     {
         return await Context.Students
+            .AsNoTracking()
             .Include(s => s.StudentCourses)
+            .ApplyFilter(filter)
             .ApplySort(dto.SortBy!, dto.SortOrder)
+            .ApplyPagination(pagination)
             .ToListAsync();
     }
 
     public async Task<StudentEntity?> GetByIdWithCoursesAsync(Guid id)
     {
         return await Context.Students
+            .AsNoTracking()
             .Include(s => s.StudentCourses)
             .ThenInclude(sc => sc.Course)
             .FirstOrDefaultAsync(s => s.StudentId == id);

@@ -1,4 +1,9 @@
 using System.Linq.Expressions;
+using Domain;
+using Microsoft.EntityFrameworkCore;
+using Service.DTOs;
+using Service.Filters;
+
 namespace Service.Extensions;
 
 public static class QueryableExtensions
@@ -33,9 +38,49 @@ public static class QueryableExtensions
     }
     
     //Version1 - filtring
+
+    public static IQueryable<StudentEntity> ApplyFilter(this IQueryable<StudentEntity> query,
+        StudentFilter filter)
+    {
+        if (!string.IsNullOrEmpty(filter.StudentName))
+            query = query.Where(x => x.StudentName.Contains(filter.StudentName));
+        
+        if (!string.IsNullOrEmpty(filter.Email))
+            query = query.Where(x => x.Email.Contains(filter.Email));
+        
+        if  (!string.IsNullOrEmpty(filter.PhoneNumber))
+            query = query.Where(x => x.PhoneNumber.Contains(filter.PhoneNumber));
+        return query;
+    }
+
+    public static IQueryable<LessonEntity> ApplyFilter(this IQueryable<LessonEntity> query,
+        LessonFilter filter)
+    {
+        if (!string.IsNullOrEmpty(filter.Title))
+            query = query.Where(x => x.Title.Contains(filter.Title));
+        if (!string.IsNullOrEmpty(filter.Description))
+            query = query.Where(x => x.Description.Contains(filter.Description));
+        return query;
+    }
     
-  //  public static IQueryable<T> ApplyFilt
+    public static IQueryable<CourseEntity> ApplyFilter(this IQueryable<CourseEntity> query,
+        CourseFilter filter)
+    {
+        if (!string.IsNullOrEmpty(filter.Title))
+            query = query.Where(x => x.Title.Contains(filter.Title));
+        if (!string.IsNullOrEmpty(filter.Description))
+            query = query.Where(x => x.Description.Contains(filter.Description));
+        return query;
+    }
    
     
+    public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, PageResult pagination)
+    {
+        if (pagination.PageNumber <= 0) pagination.PageNumber = 1;
+        if (pagination.PageSize <= 0) pagination.PageSize = 10;
+
+        return query.Skip((pagination.PageNumber - 1) * pagination.PageSize)
+            .Take(pagination.PageSize);
+    }
     
 }
