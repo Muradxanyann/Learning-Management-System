@@ -3,6 +3,7 @@ using System;
 using Infrastructure___Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure___Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250919064547_AddIndexes4")]
+    partial class AddIndexes4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,10 +115,7 @@ namespace Infrastructure___Persistence.Migrations
 
                     b.HasKey("StudentId");
 
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-                    b.ToTable("students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("Domain.LessonEntity", b =>

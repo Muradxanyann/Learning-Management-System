@@ -19,5 +19,9 @@ public class CourseConfiguration :  IEntityTypeConfiguration<CourseEntity>
             .HasMany(c => c.Lessons)
             .WithOne(l => l.Course)
             .HasForeignKey(l => l.CourseId);
+        
+        builder
+            .HasIndex(t => t.Title)
+            .IsUnique();
     }
 }

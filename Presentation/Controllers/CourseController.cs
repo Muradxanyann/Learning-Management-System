@@ -2,6 +2,7 @@ using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs;
+using Service.Filters;
 using Service.Interfaces;
 
 namespace Learning_Management_System.Controllers;
@@ -23,9 +24,12 @@ public class CourseController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<IActionResult> GetAllCourses([FromQuery] QueryParametersDto dto)
+    public async Task<IActionResult> GetAllCourses(
+        [FromQuery] QueryParametersDto dto, 
+        [FromQuery] CourseFilter filter, 
+        [FromQuery] PageResult pagination)
     {
-        var courses = await _serviceManager.Course.GetAllAsync(dto);
+        var courses = await _serviceManager.Course.GetAllAsync(dto, filter, pagination);
         var courseDos = _mapper.Map<List<CourseForResponseDto>>(courses);
         return Ok(courseDos);
     }

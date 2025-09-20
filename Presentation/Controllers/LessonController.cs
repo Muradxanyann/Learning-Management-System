@@ -2,6 +2,7 @@ using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs;
+using Service.Filters;
 using Service.Interfaces;
 
 namespace Learning_Management_System.Controllers;
@@ -23,12 +24,16 @@ public class LessonController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<IActionResult> GetAllLessons([FromQuery]  QueryParametersDto dto)
+    public async Task<IActionResult> GetAllLessons(
+        [FromQuery]  QueryParametersDto dto, 
+        [FromQuery] LessonFilter filter,
+        [FromQuery] PageResult pagination)
     {
-        var lessons = await _serviceManager.Lesson.GetAllAsync(dto);
+        var lessons = await _serviceManager.Lesson.GetAllAsync(dto,  filter, pagination);
         if (!lessons.Any())
         {
             _logger.LogInformation("No lessons found");
+            return NotFound();
         }
         
         var responses = _mapper.Map<List<LessonForResponseDto>>(lessons);
