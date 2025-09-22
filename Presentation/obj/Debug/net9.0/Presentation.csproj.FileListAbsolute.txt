@@ -197,9 +197,9 @@
 /Users/gormuradxanyan/RiderProjects/Learning Management System/Presentation/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/gormuradxanyan/RiderProjects/Learning Management System/Presentation/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/gormuradxanyan/RiderProjects/Learning Management System/Presentation/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Presentation.staticwebassets.endpoints.json
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/appsettings.Development.json
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/appsettings.json
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Presentation.staticwebassets.endpoints.json
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Presentation
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Presentation.deps.json
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Presentation.runtimeconfig.json
@@ -209,12 +209,11 @@
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Azure.Core.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Azure.Identity.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/EFCore.NamingConventions.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/FluentValidation.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/FluentValidation.AspNetCore.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Humanizer.dll
-/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/MediatR.dll
-/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/MediatR.Contracts.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.Internal.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -266,6 +265,7 @@
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Mono.TextTemplating.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Npgsql.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Scalar.AspNetCore.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Serilog.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Serilog.AspNetCore.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Serilog.Extensions.Hosting.dll
@@ -372,10 +372,8 @@
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
-/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Application-Service .dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Domain.dll
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Infrastructure-DataAccsess.dll
-/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Application-Service .pdb
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Domain.pdb
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Infrastructure-DataAccsess.pdb
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/obj/Debug/net9.0/Presentation.csproj.AssemblyReference.cache
@@ -402,4 +400,5 @@
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/obj/Debug/net9.0/Presentation.pdb
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/obj/Debug/net9.0/Presentation.genruntimeconfig.cache
 /Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/obj/Debug/net9.0/ref/Presentation.dll
-/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/EFCore.NamingConventions.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Application.dll
+/Users/gormuradxanyan/RiderProjects/Learning_Management_System/Presentation/bin/Debug/net9.0/Application.pdb

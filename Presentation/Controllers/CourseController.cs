@@ -1,9 +1,11 @@
+using Application.DTOs;
+using Application.DTOs.CourseDto;
+using Application.Filters;
+using Application.Interfaces;
 using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
-using Service.DTOs;
-using Service.Filters;
-using Service.Interfaces;
+
 
 namespace Learning_Management_System.Controllers;
 

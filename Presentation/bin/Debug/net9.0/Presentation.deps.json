@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v9.0": {
       "Presentation/1.0.0": {
         "dependencies": {
-          "Application-Service": "1.0.0",
+          "Application": "1.0.0",
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "Domain": "1.0.0",
@@ -19,10 +19,10 @@
           "Microsoft.AspNetCore.OpenApi": "9.0.4",
           "Microsoft.EntityFrameworkCore": "9.0.8",
           "Microsoft.EntityFrameworkCore.Design": "9.0.8",
+          "Scalar.AspNetCore": "2.8.5",
           "Serilog.AspNetCore": "9.0.0",
           "Serilog.Sinks.Console": "6.0.0",
-          "Swashbuckle.AspNetCore": "9.0.4",
-          "Application-Service ": "1.0.0.0"
+          "Swashbuckle.AspNetCore": "9.0.4"
         },
         "runtime": {
           "Presentation.dll": {}
@@ -136,28 +136,6 @@
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
-          }
-        }
-      },
-      "MediatR/13.0.0": {
-        "dependencies": {
-          "MediatR.Contracts": "2.0.1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
-          "Microsoft.Extensions.Logging": "9.0.8",
-          "Microsoft.IdentityModel.JsonWebTokens": "8.0.1"
-        },
-        "runtime": {
-          "lib/net9.0/MediatR.dll": {
-            "assemblyVersion": "13.0.0.0",
-            "fileVersion": "13.0.0.0"
-          }
-        }
-      },
-      "MediatR.Contracts/2.0.1": {
-        "runtime": {
-          "lib/netstandard2.0/MediatR.Contracts.dll": {
-            "assemblyVersion": "2.0.1.0",
-            "fileVersion": "2.0.1.0"
           }
         }
       },
@@ -1032,6 +1010,14 @@
           }
         }
       },
+      "Scalar.AspNetCore/2.8.5": {
+        "runtime": {
+          "lib/net9.0/Scalar.AspNetCore.dll": {
+            "assemblyVersion": "2.8.5.0",
+            "fileVersion": "2.8.5.0"
+          }
+        }
+      },
       "Serilog/4.2.0": {
         "runtime": {
           "lib/net9.0/Serilog.dll": {
@@ -1436,17 +1422,16 @@
           }
         }
       },
-      "Application-Service/1.0.0": {
+      "Application/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "Domain": "1.0.0",
-          "FluentValidation": "12.0.0",
           "Infrastructure-DataAccsess": "1.0.0",
-          "MediatR": "13.0.0"
+          "Microsoft.AspNetCore.OpenApi": "9.0.4",
+          "Microsoft.OpenApi": "1.6.25"
         },
         "runtime": {
-          "Application-Service .dll": {
+          "Application.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1455,7 +1440,9 @@
       "Domain/1.0.0": {
         "dependencies": {
           "FluentValidation": "12.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Identity.Stores": "9.0.8",
+          "Scalar.AspNetCore": "2.8.5"
         },
         "runtime": {
           "Domain.dll": {
@@ -1467,24 +1454,18 @@
       "Infrastructure-DataAccsess/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
+          "EFCore.NamingConventions": "9.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.8",
           "Microsoft.EntityFrameworkCore": "9.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.8",
           "Microsoft.Extensions.Configuration": "9.0.8",
           "Microsoft.Extensions.Configuration.FileExtensions": "9.0.8",
           "Microsoft.Extensions.Configuration.Json": "9.0.8",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "Scalar.AspNetCore": "2.8.5"
         },
         "runtime": {
           "Infrastructure-DataAccsess.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Application-Service /1.0.0.0": {
-        "runtime": {
-          "Application-Service .dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1560,20 +1541,6 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
-    },
-    "MediatR/13.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-gR5vSoIINsXs86we38qdIfG62f6ngxT2sSaePsakJGHJIgLUDA7b41lujGXGWxX0hWyk8suajr2VKcAYSVMtdw==",
-      "path": "mediatr/13.0.0",
-      "hashPath": "mediatr.13.0.0.nupkg.sha512"
-    },
-    "MediatR.Contracts/2.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-FYv95bNT4UwcNA+G/J1oX5OpRiSUxteXaUt2BJbRSdRNiIUNbggJF69wy6mnk2wYToaanpdXZdCwVylt96MpwQ==",
-      "path": "mediatr.contracts/2.0.1",
-      "hashPath": "mediatr.contracts.2.0.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.8": {
       "type": "package",
@@ -1988,6 +1955,13 @@
       "path": "npgsql.entityframeworkcore.postgresql/9.0.4",
       "hashPath": "npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512"
     },
+    "Scalar.AspNetCore/2.8.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fL9s7vtFxnYN5rEGfeemlwK2yAXoLLTYR28f8FYNEipEpPqx67i+6cbzWa0xxlnnwn5bhRi9jIQmBXk9VGwVOg==",
+      "path": "scalar.aspnetcore/2.8.5",
+      "hashPath": "scalar.aspnetcore.2.8.5.nupkg.sha512"
+    },
     "Serilog/4.2.0": {
       "type": "package",
       "serviceable": true,
@@ -2303,7 +2277,7 @@
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
-    "Application-Service/1.0.0": {
+    "Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -2315,11 +2289,6 @@
     },
     "Infrastructure-DataAccsess/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Application-Service /1.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

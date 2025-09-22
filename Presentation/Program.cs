@@ -1,48 +1,96 @@
-using Domain;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Application.DTOs;
+using Application.Interfaces;
+using Application.ProfilesForMapping;
+using Application.Services;
+using Domain.Entities;
 using Infrastructure___Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Service;
-using Service.DTOs;
-using Service.Interfaces;
-using Service.ProfilesForMapping;
-using Service.Services;
+using Microsoft.IdentityModel.Tokens;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers(); 
-builder.Services.AddEndpointsApiExplorer(); 
-builder.Services.AddSwaggerGen();
+// === JWT Settings ===
+var jwt = builder.Configuration.GetSection("JwtSettings");
+var secret = jwt["Secret"];
 
-builder.Services.AddOpenApi();
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
-        .UseSnakeCaseNamingConvention());
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret!)),
+        ValidateIssuer = true,
+        ValidIssuer = jwt["Issuer"],
+        ValidateAudience = true,
+        ValidAudience = jwt["Audience"],
+        ValidateLifetime = true,
+        RoleClaimType = ClaimTypes.Role,
+        NameClaimType = ClaimTypes.NameIdentifier
+    };
+});
+builder.Services.AddAuthorization();
 
-builder.Services.AddScoped<IServiceManager, ServiceManager>(); 
-builder.Services.AddScoped<ICourseService, CourseService>(); 
-builder.Services.AddScoped<ILessonService, LessonService>(); 
-builder.Services.AddScoped<IStudentService, StudentService>();
-
-
+// === Controllers & AutoMapper ===
+//builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(LessonProfile).Assembly);
 
+// === DbContext & Identity ===
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+           .UseSnakeCaseNamingConvention());
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+builder.Services.AddControllers();
+
+// === Services ===
+builder.Services.AddScoped<IServiceManager, ServiceManager>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<ILessonService, LessonService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+
+// === OpenAPI (Scalar) ===
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApi("v1", options => { options.AddDocumentTransformer<BearerSecuritySchemeTransformer>(); });          
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // важный момент для Role
 
 var app = builder.Build();
 
-
+// === Development Setup ===
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();   
 
+    app.MapOpenApi();
+    app.MapScalarApiReference(options =>
+    {
+        options.Theme = ScalarTheme.BluePlanet;
+        
+    });
 }
 
-app.UseHttpsRedirection();
-app.MapControllers(); 
+// === Middlewares ===
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
-
-
+app.MapControllers();
 
 app.Run();
-
