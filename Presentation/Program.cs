@@ -34,12 +34,18 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = jwt["Issuer"],
         ValidateAudience = true,
         ValidAudience = jwt["Audience"],
+        ClockSkew = TimeSpan.Zero,
         ValidateLifetime = true,
         RoleClaimType = ClaimTypes.Role,
         NameClaimType = ClaimTypes.NameIdentifier
     };
 });
 builder.Services.AddAuthorization();
+
+builder.Services.AddLogging(logging =>
+{
+    logging.AddConsole();
+});
 
 // === Controllers & AutoMapper ===
 //builder.Services.AddControllers();
@@ -90,7 +96,6 @@ if (app.Environment.IsDevelopment())
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

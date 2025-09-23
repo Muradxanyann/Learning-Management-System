@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 
 namespace Learning_Management_System.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase

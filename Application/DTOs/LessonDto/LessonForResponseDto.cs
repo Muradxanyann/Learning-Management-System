@@ -1,3 +1,5 @@
+namespace Application.DTOs.LessonDto;
+
 public record LessonForResponseDto
 {
     public Guid LessonId { get; init; }

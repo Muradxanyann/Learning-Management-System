@@ -1,3 +1,5 @@
+using Application.DTOs.LessonDto;
+
 namespace Application.DTOs.CourseDto;
 
 public record CourseForResponseDto

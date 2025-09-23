@@ -42,7 +42,7 @@ public class CourseController : ControllerBase
         var course = await _serviceManager.Course.GetByIdAsync(id);
         if (course == null)
         {
-            _logger.LogInformation($"Entity with id {id} was not found");
+            _logger.LogInformation("Entity with id {Guid} was not found", id);
             return NotFound();
         }
         

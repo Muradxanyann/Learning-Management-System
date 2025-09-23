@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Learning_Management_System.Controllers;
 
-[ApiController]
+/*[ApiController]
 [Route("api/test")]
 public class TestController : ControllerBase
 {
@@ -11,6 +12,7 @@ public class TestController : ControllerBase
     public IActionResult Ping() => Ok("pong");
 
     [HttpGet("auth")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Roles = "Admin")]
     public IActionResult Auth() => Ok("Authorized!");
-}
+}*/

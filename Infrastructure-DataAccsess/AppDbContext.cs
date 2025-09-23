@@ -6,9 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure___Persistence;
 
-public class AppDbContext :  IdentityDbContext<ApplicationUser>
+public class AppDbContext : IdentityDbContext<ApplicationUser>
 {
-    public AppDbContext (DbContextOptions<AppDbContext> options) : base (options){ }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+
     public DbSet<CourseEntity> Courses { get; set; } = null!;
     
     public DbSet<LessonEntity> Lessons { get; set; } = null!;
