@@ -8,6 +8,7 @@ public class CourseConfiguration :  IEntityTypeConfiguration<CourseEntity>
 {
     public void Configure(EntityTypeBuilder<CourseEntity> builder)
     {
+       
         builder.HasKey(c => c.CourseId);
 
         builder

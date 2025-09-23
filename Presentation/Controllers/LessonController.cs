@@ -1,9 +1,11 @@
+using Application.DTOs;
+using Application.DTOs.LessonDto;
+using Application.Filters;
+using Application.Interfaces;
 using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
-using Service.DTOs;
-using Service.Filters;
-using Service.Interfaces;
+
 
 namespace Learning_Management_System.Controllers;
 
@@ -29,13 +31,14 @@ public class LessonController : ControllerBase
         [FromQuery] LessonFilter filter,
         [FromQuery] PageResult pagination)
     {
+        Console.WriteLine("Hello World from LessonController");
         var lessons = await _serviceManager.Lesson.GetAllAsync(dto,  filter, pagination);
         if (!lessons.Any())
         {
             _logger.LogInformation("No lessons found");
             return NotFound();
         }
-        
+            
         var responses = _mapper.Map<List<LessonForResponseDto>>(lessons);
         return Ok(responses);
     }
@@ -55,20 +58,20 @@ public class LessonController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> CreateLesson(Guid courseId, [FromBody] LessonForCreationDto dto)
+    public async Task<IActionResult> CreateLesson([FromQuery]Guid courseId, [FromBody] LessonForCreationDto dto)
     {
         var course = await _serviceManager.Course.GetByIdAsync(courseId);
         if (course == null)
         {
             _logger.LogInformation("No course found with id {courseId}", courseId);
-            return NotFound();
+            return NotFound("Course not found");
         }
         var lesson = _mapper.Map<LessonEntity>(dto);
         
         course.Lessons.Add(lesson);
+        lesson.CourseId = courseId;
+
         await _serviceManager.Lesson.CreateAsync(lesson);
-        Console.WriteLine(course.Lessons.Count);
-        
         await _serviceManager.SaveAsync();
 
         var responseDto = _mapper.Map<LessonForResponseDto>(lesson);

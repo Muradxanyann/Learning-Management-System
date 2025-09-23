@@ -1,8 +1,12 @@
+bin/
+obj/
+*.cache
+*.nuget.info
+*.dll
+*.pdb
 # Build artifacts
 bin/
 obj/
-*.nuget.info
-*.cache
 
 # Rider / JetBrains IDE
 .idea/

@@ -1,9 +1,13 @@
+using System.Security.Claims;
+using Application.DTOs;
+using Application.DTOs.StudentDto;
+using Application.Filters;
+using Application.Interfaces;
 using AutoMapper;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.DTOs;
-using Service.Filters;
-using Service.Interfaces;
+
 
 namespace Learning_Management_System.Controllers;
 

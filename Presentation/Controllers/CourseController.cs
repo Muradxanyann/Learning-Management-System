@@ -1,9 +1,11 @@
+using Application.DTOs;
+using Application.DTOs.CourseDto;
+using Application.Filters;
+using Application.Interfaces;
 using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
-using Service.DTOs;
-using Service.Filters;
-using Service.Interfaces;
+
 
 namespace Learning_Management_System.Controllers;
 
@@ -40,7 +42,7 @@ public class CourseController : ControllerBase
         var course = await _serviceManager.Course.GetByIdAsync(id);
         if (course == null)
         {
-            _logger.LogInformation($"Entity with id {id} was not found");
+            _logger.LogInformation("Entity with id {Guid} was not found", id);
             return NotFound();
         }
         
