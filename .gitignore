@@ -1,30 +1,28 @@
+# Сборочные артефакты
 bin/
 obj/
+[Bb]uild/
+[Ll]og/
+[Tt]emp/
 *.cache
 *.nuget.info
-*.dll
-*.pdb
-# Build artifacts
-bin/
-obj/
 
-# Rider / JetBrains IDE
+# Rider / JetBrains
 .idea/
 *.sln.iml
+*.userprefs
 
-# User-specific
+# Visual Studio
+.vs/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-# Logs and temp
-*.log
-*.vspscc
-*.vssscc
+# Конфиги окружения
+*.env
+appsettings.Development.json
 
-# Cache
-*.cache
-*.nuget.info
-*.dll
-*.pdb
+# Системные
+.DS_Store
+Thumbs.db
