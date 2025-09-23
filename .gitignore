@@ -1,6 +1,8 @@
 # Build artifacts
 bin/
 obj/
+*.nuget.info
+*.cache
 
 # Rider / JetBrains IDE
 .idea/
