@@ -1,0 +1,30 @@
+bin/
+obj/
+*.cache
+*.nuget.info
+*.dll
+*.pdb
+# Build artifacts
+bin/
+obj/
+
+# Rider / JetBrains IDE
+.idea/
+*.sln.iml
+
+# User-specific
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs and temp
+*.log
+*.vspscc
+*.vssscc
+
+# Cache
+*.cache
+*.nuget.info
+*.dll
+*.pdb
