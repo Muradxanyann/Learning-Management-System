@@ -1,24 +1,22 @@
-using System.ComponentModel.DataAnnotations.Schema;
+namespace Domain.Entities;
 
-namespace Domain;
-
-public class StudentCourse
+public class StudentCourseEntity
 {
- 
-    public Guid StudentId { get; set; }
-    public StudentEntity Student { get; set; } = null!;
-    
+    public string StudentId { get; set; } = null!;
+    public ApplicationUser Student { get; set; } = null!;
+
     public Guid CourseId { get; set; }
     public CourseEntity Course { get; set; } = null!;
-    
-    public DateTime Created { get; set; }
-    public bool IsCompleted { get; set; }
-    
-    public StudentCourse() { }
 
-    public StudentCourse(StudentEntity student, CourseEntity course)
+    public DateTime Created { get; set; } = DateTime.UtcNow;
+    public bool IsCompleted { get; set; } = false;
+
+    
+    public StudentCourseEntity() { }
+
+    public StudentCourseEntity(ApplicationUser student, CourseEntity course)
     {
-        StudentId = student.StudentId;
+        StudentId = student.Id;
         Student = student;
         
         CourseId = course.CourseId;
@@ -28,3 +26,4 @@ public class StudentCourse
         IsCompleted = false;
     }
 }
+

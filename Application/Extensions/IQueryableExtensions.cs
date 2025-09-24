@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using Application.Filters;
 using Domain;
+using Domain.Entities;
 
 namespace Application.Extensions;
 
@@ -35,19 +36,18 @@ public static class QueryableExtensions
         return query.Provider.CreateQuery<T>(resultExp);
     }
     
-    //Version1 - filtring
 
-    public static IQueryable<StudentEntity> ApplyFilter(this IQueryable<StudentEntity> query,
-        StudentFilter filter)
+    public static IQueryable<ApplicationUser> ApplyFilter(this IQueryable<ApplicationUser> query,
+        UserFilter filter)
     {
         if (!string.IsNullOrEmpty(filter.StudentName))
-            query = query.Where(x => x.StudentName.Contains(filter.StudentName));
+            query = query.Where(x => x.UserName!.Contains(filter.StudentName));
         
         if (!string.IsNullOrEmpty(filter.Email))
-            query = query.Where(x => x.Email.Contains(filter.Email));
+            query = query.Where(x => x.Email!.Contains(filter.Email));
         
         if  (!string.IsNullOrEmpty(filter.PhoneNumber))
-            query = query.Where(x => x.PhoneNumber.Contains(filter.PhoneNumber));
+            query = query.Where(x => x.PhoneNumber!.Contains(filter.PhoneNumber));
         return query;
     }
 

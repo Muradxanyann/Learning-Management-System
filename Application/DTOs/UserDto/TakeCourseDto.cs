@@ -1,3 +1,3 @@
-namespace Application.DTOs.StudentDto;
+namespace Application.DTOs.UserDto;
 
 public record TakeCourseDto(Guid CourseId);

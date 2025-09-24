@@ -4,6 +4,5 @@ namespace Domain.Entities;
 
 public class ApplicationUser : IdentityUser
 {
-    public string? FullName { get; set; } 
-    
+    public ICollection<StudentCourseEntity> CoursesTaken { get; set; } = new List<StudentCourseEntity>();
 }

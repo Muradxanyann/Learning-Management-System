@@ -4,6 +4,9 @@ public interface IServiceManager
 {
     ICourseService Course { get; }
     ILessonService  Lesson { get; }
-    IStudentService Student { get; }
+    IUserService User { get; }
+    
+    IStudentCourseService  StudentCourse { get; }
     Task SaveAsync();
 }
+

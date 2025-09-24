@@ -3,6 +3,7 @@ using Application.DTOs.CourseDto;
 using AutoMapper;
 using Domain;
 using Domain.Entities;
+using ApplicationUser = Domain.Entities.ApplicationUser;
 
 namespace Application.ProfilesForMapping;
 
@@ -14,7 +15,7 @@ public class CourseProfile : Profile
         
 
         CreateMap<CourseForCreationDto, CourseEntity>()
-            .ForMember(dest => dest.StudentCourses, opt => opt.Ignore());
+            .ForMember<object>(dest => dest.StudentCourses, opt => opt.Ignore());
         
         CreateMap<CourseEntity, CourseForResponseDtoWithoutLessons>();
         
