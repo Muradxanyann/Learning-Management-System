@@ -26,3 +26,8 @@ appsettings.Development.json
 # Системные
 .DS_Store
 Thumbs.db
+
+.DS_Store
+Learning_Management_System.sln
+qodana.yaml
+Learning_Management_System.sln.DotSettings.user
