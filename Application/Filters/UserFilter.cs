@@ -1,6 +1,6 @@
 namespace Application.Filters;
 
-public class StudentFilter
+public class UserFilter
 {
     public string? StudentName { get; set; } =  null!;
     public string? Email { get; set; } =  null!;

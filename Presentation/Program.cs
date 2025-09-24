@@ -69,8 +69,10 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ILessonService, LessonService>();
-builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IStudentCourseService, StudentCourseService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+
 
 // === OpenAPI (Scalar) ===
 builder.Services.AddEndpointsApiExplorer();

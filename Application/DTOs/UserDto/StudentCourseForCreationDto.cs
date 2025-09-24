@@ -1,4 +1,4 @@
-namespace Application.DTOs.StudentDto;
+namespace Application.DTOs.UserDto;
 
 public record StudentCourseForCreationDto
 {
