@@ -70,12 +70,16 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginDto dto)
     {
         var user = await _userManager.FindByEmailAsync(dto.Email);
+        
         if (user == null)
             return Unauthorized("Invalid credentials");
+        Console.WriteLine("Passed email");
         
         var passwordValid = await _userManager.CheckPasswordAsync(user, dto.Password);
         if (!passwordValid)
-            return Unauthorized("Invalid credentials");
+            return Unauthorized("Invalid credentials"); 
+        
+
 
         var tokenDto = await _tokenService.CreateTokenAsync(user);
         return Ok(tokenDto);

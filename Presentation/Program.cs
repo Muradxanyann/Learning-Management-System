@@ -6,6 +6,7 @@ using Application.Interfaces;
 using Application.ProfilesForMapping;
 using Application.Services;
 using Domain.Entities;
+using Domain.Exceptions;
 using Infrastructure___Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -14,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // === JWT Settings ===
 var jwt = builder.Configuration.GetSection("JwtSettings");
@@ -81,7 +83,18 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // важный мо
 
 var app = builder.Build();
 
+// ===Create Roles && Admin Automatically===
+using var scope = app.Services.CreateScope();
+var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+
+await IdentitySeeder.SeedRolesAsync(roleManager);
+await IdentitySeeder.SeedAdminAsync(userManager, config);
+
+
 // === Development Setup ===
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -90,7 +103,6 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference(options =>
     {
         options.Theme = ScalarTheme.BluePlanet;
-        
     });
 }
 

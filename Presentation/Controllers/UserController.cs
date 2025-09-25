@@ -51,7 +51,7 @@ public class UserController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(string id)
     {
-        var user = await _userManager.FindByIdAsync(id);
+        var user = await _serviceManager.User.GetByIdWithCoursesAsync(id);
         if (user == null)
             return NotFound();
 
@@ -104,7 +104,7 @@ public class UserController : ControllerBase
         return Ok(new { Message = "Course taken successfully", result.CourseId });
     }
 
-    /*[HttpPost("{courseId}/complete")]
+    [HttpPost("{courseId}/complete")]
     [Authorize (AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Authorize(Roles = "Student")]
     public async Task<IActionResult> CompleteCourse(Guid courseId)
@@ -116,6 +116,6 @@ public class UserController : ControllerBase
         var success = await _serviceManager.StudentCourse.CompleteCourseAsync(userId, courseId);
 
         return success ? Ok("Course completed!") : BadRequest("Course not found.");
-    }*/
+    }
 }
 
