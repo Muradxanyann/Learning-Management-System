@@ -58,9 +58,12 @@ public class LessonController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> CreateLesson([FromQuery]Guid courseId, [FromBody] LessonForCreationDto dto)
+    public async Task<IActionResult> CreateLesson([FromQuery]Guid courseId,
+        [FromBody] LessonForCreationDto dto,
+        CancellationToken ct = default
+        )
     {
-        var course = await _serviceManager.Course.GetByIdAsync(courseId);
+        var course = await _serviceManager.Course.GetByIdAsync(courseId, ct);
         if (course == null)
         {
             _logger.LogInformation("No course found with id {courseId}", courseId);
@@ -71,20 +74,20 @@ public class LessonController : ControllerBase
         course.Lessons.Add(lesson);
         lesson.CourseId = courseId;
 
-        await _serviceManager.Lesson.CreateAsync(lesson);
-        await _serviceManager.SaveAsync();
+        await _serviceManager.Lesson.CreateAsync(lesson, ct);
+        await _serviceManager.SaveAsync(ct);
 
         var responseDto = _mapper.Map<LessonForResponseDto>(lesson);
         return CreatedAtAction(nameof(GetLessonById), new { id = responseDto.LessonId }, responseDto);
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteLesson(Guid id)
+    public async Task<IActionResult> DeleteLesson(Guid id,  CancellationToken ct = default)
     {
         var lesson = await _serviceManager.Lesson.DeleteAsync(id);
         if (!lesson)
             return NotFound();
-        await _serviceManager.SaveAsync();
+        await _serviceManager.SaveAsync(ct);
         return NoContent();
     }
     

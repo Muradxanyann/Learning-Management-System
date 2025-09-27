@@ -19,7 +19,11 @@ public class CourseService : BaseService<CourseEntity>, ICourseService
     {
     }
 
-    public async Task<IEnumerable<CourseEntity>> GetAllAsync(QueryParametersDto dto,  CourseFilter filter,  PageResult pagination)
+    public async Task<IEnumerable<CourseEntity>> GetAllAsync(
+        QueryParametersDto dto,
+        CourseFilter filter,
+        PageResult pagination,
+        CancellationToken ct = default)
     {
         return await Context.Courses
             .AsNoTracking()
@@ -27,14 +31,14 @@ public class CourseService : BaseService<CourseEntity>, ICourseService
             .ApplyFilter(filter)
             .ApplySort(dto.SortBy!, dto.SortOrder)
             .ApplyPagination(pagination)
-            .ToListAsync();
+            .ToListAsync(ct);
     }
-    public new async Task<CourseEntity?> GetByIdAsync(Guid id) 
+    public new async Task<CourseEntity?> GetByIdAsync(Guid id, CancellationToken ct = default) 
     {
         return await Context.Courses
             .AsNoTracking()
             .Include(c => c.Lessons)
-            .FirstOrDefaultAsync(c => c.CourseId == id);
+            .FirstOrDefaultAsync(c => c.CourseId == id, ct);
     }
     
 }

@@ -21,7 +21,7 @@ public class TokenService  : ITokenService
         _configuration = configuration;
     }
     
-    public async Task<AuthResponseDto> CreateTokenAsync(ApplicationUser user)
+    public async Task<AuthResponseDto> CreateTokenAsync(ApplicationUser user, CancellationToken ct = default)
     {
         var jwtSection = _configuration.GetSection("JwtSettings");
         var secret = jwtSection["Secret"];

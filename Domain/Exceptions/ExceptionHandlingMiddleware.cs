@@ -29,6 +29,12 @@ public class ExceptionHandlingMiddleware
             context.Response.StatusCode = (int)HttpStatusCode.NotFound;
             await context.Response.WriteAsJsonAsync(new { Message = ex.Message });
         }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Request was cancelled by client: {Message}", ex.Message);
+            context.Response.StatusCode = (int)HttpStatusCode.NoContent;
+            await context.Response.WriteAsJsonAsync(new { Message = ex.Message });
+        }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unhandled exception: {Message}", ex.Message);
@@ -45,5 +51,6 @@ public class ExceptionHandlingMiddleware
             var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
             await context.Response.WriteAsync(JsonSerializer.Serialize(response, options));
         }
+        
     }
 }

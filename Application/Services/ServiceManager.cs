@@ -26,5 +26,5 @@ public class ServiceManager  : IServiceManager
     public IUserService User => _userService ??= new UserService(_context);
     
     public IStudentCourseService StudentCourse => _studentCourseService ??= new StudentCourseService(_context, _userManager);
-    public Task SaveAsync() => _context.SaveChangesAsync();
+    public Task SaveAsync(CancellationToken ct) => _context.SaveChangesAsync(ct);
 }

@@ -32,7 +32,8 @@ public class UserService : BaseService<ApplicationUser>, IUserService
     public  async Task<IEnumerable<ApplicationUser>> GetAllAsync(
         QueryParametersDto dto,
         UserFilter filter,
-        PageResult pagination)
+        PageResult pagination,
+        CancellationToken ct = default)
     {
         var query = 
             Context.Users
@@ -44,17 +45,17 @@ public class UserService : BaseService<ApplicationUser>, IUserService
             .ApplyPagination(pagination);
         
 
-        return await query.ToListAsync();
+        return await query.ToListAsync(ct);
     }
 
    
-    public async Task<ApplicationUser?> GetByIdWithCoursesAsync(string id)
+    public async Task<ApplicationUser?> GetByIdWithCoursesAsync(string id,  CancellationToken ct = default)
     {
         return await Context.Users
             .AsNoTracking()
             .Include(s => s.CoursesTaken)
             .ThenInclude(sc => sc.Course)
-            .FirstOrDefaultAsync(s => s.Id == id);
+            .FirstOrDefaultAsync(s => s.Id == id, ct);
     }
 
     

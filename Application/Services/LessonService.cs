@@ -18,13 +18,17 @@ public class LessonService : BaseService<LessonEntity>, ILessonService
        
     }
 
-    public async Task<IEnumerable<LessonEntity>> GetAllAsync(QueryParametersDto dto, LessonFilter filter, PageResult pagination)
+    public async Task<IEnumerable<LessonEntity>> GetAllAsync(
+        QueryParametersDto dto,
+        LessonFilter filter,
+        PageResult pagination,
+        CancellationToken ct = default)
     {
         return await Context.Lessons
             .AsNoTracking()
             .ApplyFilter(filter)
             .ApplySort(dto.SortBy!, dto.SortOrder)
             .ApplyPagination(pagination)
-            .ToListAsync();
+            .ToListAsync(ct);
     }
 }

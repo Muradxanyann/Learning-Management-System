@@ -6,5 +6,9 @@ namespace Application.Interfaces;
 
 public interface ILessonService : IBaseService<LessonEntity>
 {
-    public Task<IEnumerable<LessonEntity>> GetAllAsync(QueryParametersDto dto, LessonFilter filter, PageResult pagination);
+    public Task<IEnumerable<LessonEntity>> GetAllAsync(
+        QueryParametersDto dto, 
+        LessonFilter filter, 
+        PageResult pagination,   
+        CancellationToken cancellationToken = default);
 } 

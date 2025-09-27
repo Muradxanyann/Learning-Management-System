@@ -51,21 +51,21 @@ public class CourseController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> CreateCourse([FromBody] CourseForCreationDto dto)
+    public async Task<IActionResult> CreateCourse([FromBody] CourseForCreationDto dto, CancellationToken ct =  default)
     {
         var course = _mapper.Map<CourseEntity>(dto);
-        await _serviceManager.Course.CreateAsync(course);
-        await _serviceManager.SaveAsync();
+        await _serviceManager.Course.CreateAsync(course, ct);
+        await _serviceManager.SaveAsync(ct);
         return CreatedAtAction(nameof(GetCourseById), new { id = course.CourseId }, course);
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteCourse(Guid id)
+    public async Task<IActionResult> DeleteCourse(Guid id,  CancellationToken ct = default)
     {
-        var course = await _serviceManager.Course.DeleteAsync(id);
+        var course = await _serviceManager.Course.DeleteAsync(id, ct);
         if (!course)
             return NotFound();
-        await _serviceManager.SaveAsync();
+        await _serviceManager.SaveAsync(ct);
         return NoContent();
 
     }

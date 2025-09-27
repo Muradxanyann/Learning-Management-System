@@ -16,17 +16,17 @@ public class StudentCourseService :  IStudentCourseService
         _userManager = userManager;
         _context = context;
     }
-    public async Task<StudentCourseEntity?> TakeCourseAsync(string userId, Guid courseId)
+    public async Task<StudentCourseEntity?> TakeCourseAsync(string userId, Guid courseId, CancellationToken ct)
     {
         var user = await _userManager.Users
             .Include(u => u.CoursesTaken)
             .ThenInclude(sc => sc.Course)
-            .FirstOrDefaultAsync(u => u.Id == userId);
+            .FirstOrDefaultAsync(u => u.Id == userId, ct);
 
         if (user == null) 
             return null;
 
-        var course = await _context.Courses.FirstOrDefaultAsync(c => c.CourseId == courseId);
+        var course = await _context.Courses.FirstOrDefaultAsync(c => c.CourseId == courseId, ct);
         if (course == null) 
             return null;
 
@@ -43,40 +43,40 @@ public class StudentCourseService :  IStudentCourseService
         };
 
         _context.Add(studentCourse);
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(ct);
 
         return studentCourse;
     }
 
-    public async Task<bool> CompleteCourseAsync(string userId, Guid courseId)
+    public async Task<bool> CompleteCourseAsync(string userId, Guid courseId, CancellationToken ct)
     {
         var studentCourse = await _context.Set<StudentCourseEntity>()
-            .FirstOrDefaultAsync(sc => sc.StudentId == userId && sc.CourseId == courseId);
+            .FirstOrDefaultAsync(sc => sc.StudentId == userId && sc.CourseId == courseId, ct);
 
         if (studentCourse == null)
             return false;
 
         studentCourse.IsCompleted = true;
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(ct);
 
         return true;
     }
 
-    public async Task<IEnumerable<CourseEntity>> GetCoursesByUserAsync(string userId)
+    public async Task<IEnumerable<CourseEntity>> GetCoursesByUserAsync(string userId, CancellationToken ct)
     {
         return await _context.Set<StudentCourseEntity>()
             .Where(sc => sc.StudentId == userId)
             .Include(sc => sc.Course)
             .Select(sc => sc.Course)
-            .ToListAsync();
+            .ToListAsync(ct);
     }
 
-    public async Task<IEnumerable<ApplicationUser>> GetStudentsByCourseAsync(Guid courseId)
+    public async Task<IEnumerable<ApplicationUser>> GetStudentsByCourseAsync(Guid courseId,  CancellationToken ct)
     {
         return await _context.Set<StudentCourseEntity>()
             .Where(sc => sc.CourseId == courseId)
             .Include(sc => sc.Student)
             .Select(sc => sc.Student)
-            .ToListAsync();
+            .ToListAsync(ct);
     }
 }

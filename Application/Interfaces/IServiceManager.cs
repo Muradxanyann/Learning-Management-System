@@ -5,8 +5,7 @@ public interface IServiceManager
     ICourseService Course { get; }
     ILessonService  Lesson { get; }
     IUserService User { get; }
-    
     IStudentCourseService  StudentCourse { get; }
-    Task SaveAsync();
+    Task SaveAsync(CancellationToken ct);
 }
 

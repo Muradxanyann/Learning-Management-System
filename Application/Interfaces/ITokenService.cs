@@ -5,5 +5,5 @@ namespace Application.Interfaces;
 
 public interface ITokenService
 {
-    Task<AuthResponseDto> CreateTokenAsync(ApplicationUser user);
+    Task<AuthResponseDto> CreateTokenAsync(ApplicationUser user, CancellationToken cancellationToken = default);
 }
