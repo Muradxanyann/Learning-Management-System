@@ -1,136 +1,106 @@
-# Learning Management System (LMS) – ASP.NET Core Pet Project
+# 🎓 Learning Management System (LMS) – ASP.NET Core Web API
 
-![.NET](https://img.shields.io/badge/.NET-8-blue)
-![C#](https://img.shields.io/badge/C%23-9.0-blue)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
-![EF Core](https://img.shields.io/badge/EntityFrameworkCore-8.0-blue)
+![.NET](https://img.shields.io/badge/.NET-8.0-blue)  
+![EF Core](https://img.shields.io/badge/EF--Core-PostgreSQL-green)  
+![Identity](https://img.shields.io/badge/Identity-JWT-orange)  
+![Status](https://img.shields.io/badge/Status-Development-yellow)
 
-## 📖 Overview
-This is a **Learning Management System (LMS)** pet project built with **ASP.NET Core 8**, designed to practice and demonstrate a full-stack backend architecture using **Onion Architecture** principles.
-
-The project includes three main models:
-
-- **Student** – represents a student entity
-- **Course** – represents a course entity
-- **Lesson** – represents a lesson inside a course
-
-The project is fully layered:
-- **Domain Layer** – entities and interfaces
-- **Infrastructure Layer** – database context, migrations, repository implementations
-- **Service Layer** – business logic and service interfaces
-- **Presentation Layer** – API controllers (CRUD + Swagger)
+A structured **Learning Management System (LMS)** built with **ASP.NET Core Web API**.  
+It provides authentication, authorization, course management, and user roles with a clean architecture approach.
 
 ---
 
 ## ✨ Features
 
-- **CRUD operations** for Student, Course, and Lesson
-- **DTOs** for request/response to avoid exposing EF Core entities
-- **AutoMapper** integration for clean object-to-object mapping
-- **Sorting** (dynamic by any field)
-- **Filtering** (query-based filtering with DTOs)
-- **Pagination** (page number & page size support)
-- **Swagger UI** for easy API testing
-- **PostgreSQL** database integration with EF Core migrations
-- **Onion Architecture** for clear separation of concerns
-- **Async/await** for all database operations
-- **Fluent API & Data Annotations** for EF Core model configuration
-- **GUID primary keys** for all entities
-- **Snake_case convention** for PostgreSQL compatibility
+- **Authentication & Authorization**
+    - JWT-based authentication
+    - Role-based authorization (`Admin`, `Student`)
+    - Automatic seeding of roles and admin user
+
+- **Core Functionality**
+    - Course management (`CourseService`, `LessonService`)
+    - Student course enrollment (`TakeCourse`)
+    - User management
+
+- **Infrastructure**
+    - **Entity Framework Core + PostgreSQL**
+    - **ASP.NET Core Identity**
+    - **AutoMapper** for DTO ↔ Entity mapping
+    - **Serilog** for logging
+    - **FluentValidation** for request validation
+    - **Custom Exception Handling Middleware**
+
+- **Developer Experience**
+    - OpenAPI docs powered by **Scalar** (instead of Swagger)
+    - Automatic API reference UI
 
 ---
 
-## 🏗️ Project Structure
-
-The project follows **Onion Architecture** principles and is organized as follows:
+## 📂 Project Structure
 ```
-📂 Domain
- ├── Domain.csproj
- ├── 📂 Entities
- │    ├── CourseEntity.cs
- │    ├── LessonEntity.cs
- │    ├── StudentEntity.cs
- │    └── StudentCourse.cs
- └── 📂 Exceptions
-      └── NotFoundException.cs
-
-📂 Application-Service
- ├── Application-Service.csproj
- ├── 📂 DTOs
- │    ├── 📂 CourseDto
- │    │    ├── CourseForCreationDto.cs
- │    │    ├── CourseForResponseDto.cs
- │    │    └── CourseForResponseDtoWithoutLessons.cs
- │    ├── 📂 LessonDto
- │    │    ├── LessonForCreationDto.cs
- │    │    └── LessonForResponseDto.cs
- │    ├── 📂 StudentDto
- │    │    ├── StudentCourseForCreationDto.cs
- │    │    ├── StudentForCreationDto.cs
- │    │    ├── StudentForResponseDto.cs
- │    │    └── TakeCourseDto.cs
- │    └── QueryParametersDTO.cs
- ├── 📂 Filters
- │    ├── CourseFilter.cs
- │    ├── LessonFilter.cs
- │    ├── StudentFilter.cs
- │    └── PaginationBase.cs
- ├── 📂 Extensions
- │    └── IQueryableExtensions.cs
- ├── 📂 Interfaces
- │    ├── IBaseService.cs
- │    ├── ICourseService.cs
- │    ├── ILessonService.cs
- │    ├── IStudentService.cs
- │    └── IServiceManager.cs
- ├── 📂 ProfilesForMapping
- │    ├── CourseProfile.cs
- │    ├── LessonProfile.cs
- │    ├── StudentProfile.cs
- │    └── StudentCourseProfile.cs
- └── 📂 Services
-      ├── BaseService.cs
-      ├── CourseService.cs
-      ├── LessonService.cs
-      ├── StudentServices.cs
-      └── ServiceManager.cs
-
-📂 Infrastructure-DataAccsess
- ├── Infrastructure-DataAccsess.csproj
- ├── AppDbContext.cs
- ├── 📂 Configurations
- │    ├── CourseConfiguration.cs
- │    ├── LessonConfiguration.cs
- │    ├── StudentConfiguration.cs
- │    └── StudentCourseConfiguration.cs
- └── 📂 Migrations
-      ├── AppDbContextModelSnapshot.cs
-     
-📂 Presentation
- ├── Presentation.csproj
- ├── Program.cs
- ├── appsettings.json
- ├── appsettings.Development.json
- ├── 📂 Properties
- │    └── launchSettings.json
- └── 📂 Controllers
-      ├── CourseController.cs
-      ├── LessonController.cs
-      └── StudentController.cs
+Learning_Management_System/
+├── Application/
+│   ├── DTOs/                # Data Transfer Objects (Login, Register, AuthResponse, etc.)
+│   ├── Interfaces/          # Service interfaces
+│   ├── ProfilesForMapping/  # AutoMapper profiles
+│   └── Services/            # Business logic (TokenService, UserService, etc.)
+│
+├── Domain/
+│   ├── Entities/            # Core entities (User, Course, Lesson, etc.)
+│   └── Exceptions/          # Custom domain exceptions
+│
+├── Infrastructure___Persistence/
+│   ├── AppDbContext.cs      # EF Core DbContext
+│   └── IdentitySeeder.cs    # Seeds roles and admin user
+│
+├── Presentation/
+│   ├── Controllers/         # API controllers (AuthController, UserController, etc.)
+│   ├── Middleware/          # ExceptionHandlingMiddleware
+│   └── Program.cs           # App entry point & DI setup
+│
+└── README.md
 ```
 ---
 
-## 🛠️ Technologies Used
+## 🔐 Authentication & Authorization
 
-- **ASP.NET Core 8** – Web API framework
-- **Entity Framework Core** – ORM for PostgreSQL
-- **PostgreSQL** – Relational database
-- **Swashbuckle / Swagger** – Interactive API documentation
-- **AutoMapper** – DTO ↔ Entity mapping
-- **Onion Architecture** – Layered architecture pattern
-- **DTOs** – Clean API models and data transfer
-- **LINQ + IQueryable Extensions** – Sorting, filtering, pagination
+### JWT Settings (`appsettings.json`):
+```json
+"JwtSettings": {
+  "Secret": "your-very-strong-secret-key",
+  "Issuer": "LMS",
+  "Audience": "LMSClient",
+  "ExpiresMinutes": 60
+} 
+```
+# Example: Login Request
+```
+POST /api/auth/login
+Content-Type: application/json
 
+{
+  "email": "student@example.com",
+  "password": "Password123!"
+}
+```
+
+# Example: Protected Endpoint
+```
+POST /takeCourse?courseId=123e4567-e89b-12d3-a456-426614174000
+Authorization: Bearer <your_token>
+```
+---
+🛠 Technologies Used
+
+- **ASP.NET Core 8.0 – Web API framework**
+- **Entity Framework Core – Data access**
+- **PostgreSQL – Database**
+- **ASP.NET Core Identity – Authentication & Roles**
+- **JWT (System.IdentityModel.Tokens.Jwt) – Token-based auth**
+- **AutoMapper – Object mapping**
+- **Serilog – Logging**
+- **FluentValidation – Input validation**
+- **Scalar.AspNetCore – OpenAPI & API reference**
 ---
 
 ## 📌 Notes
@@ -141,9 +111,6 @@ The project follows **Onion Architecture** principles and is organized as follow
 - **Sorting, Filtering, Pagination** are implemented with reusable `IQueryable` extensions.
 - **Onion Architecture** separates core business logic from infrastructure and presentation layers.
 - **Database schema** uses `snake_case` for PostgreSQL compatibility.
-- **Swagger UI** is fully integrated for testing all CRUD + query features.
-
----  
 
 ---
 
@@ -173,6 +140,24 @@ Follow these steps to get the Learning Management System running locally:
    dotnet ef database update
    dotnet run
    
-5.Access Swagger UI
+4. **Run the project**
+    ```bash
+    dotnet run --project Presentation
 
-Open your browser and navigate to: https://localhost(5001)/swagger
+Access OpenAPI Docs
+
+After running the app in Development, visit:
+```
+https://localhost:5001/scalar/v1
+```
+
+
+📌 Roadmap
+- **Add Unit & Integration Tests**
+- **Implement Teacher role**
+- **Add Course Progress Tracking**
+- **Add Caching & Rate Limiting**
+
+👨‍💻 Author
+
+Developed with ❤️ using ASP.NET Core.
