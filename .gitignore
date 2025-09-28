@@ -1,33 +1,27 @@
-# Сборочные артефакты
-bin/
-obj/
-[Bb]uild/
-[Ll]og/
-[Tt]emp/
-*.cache
-*.nuget.info
-
-# Rider / JetBrains
-.idea/
-*.sln.iml
-*.userprefs
-
-# Visual Studio
-.vs/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-# Конфиги окружения
+# --- Секреты и конфиги ---
 *.env
+appsettings.json
 appsettings.Development.json
 
-# Системные
+# --- Системные ---
 .DS_Store
 Thumbs.db
 
-.DS_Store
-Learning_Management_System.sln
+# --- IDE/VS Rider ---
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+*.DotSettings.user
+
+# --- Build ---
+bin/
+obj/
+
+# --- Временные файлы ---
+*.http
+
+# --- Анализаторы ---
 qodana.yaml
-Learning_Management_System.sln.DotSettings.user
